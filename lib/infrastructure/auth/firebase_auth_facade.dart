@@ -77,7 +77,10 @@ class FirebaseAuthFacade implements IAuthFacade {
       return _firebaseAuth
           .signInWithCredential(authCredential)
           .then((value) => right(unit));
-    } on FirebaseAuthException catch (_) {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'sign_in_canceled') {
+        return left(const AuthFailure.cancelledByUser());
+      }
       return left(const AuthFailure.serverError());
     }
   }

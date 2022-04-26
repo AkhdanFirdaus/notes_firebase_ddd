@@ -7,7 +7,7 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   if (RegExp(emailRegex).hasMatch(input)) {
     return right(input);
   } else {
-    throw left(ValueFailure.invalidEmail(failedValue: input));
+    return left(ValueFailure.invalidEmail(failedValue: input));
   }
 }
 

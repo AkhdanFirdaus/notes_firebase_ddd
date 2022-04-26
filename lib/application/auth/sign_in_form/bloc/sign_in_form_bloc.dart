@@ -15,8 +15,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
 
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
-    on<SignInFormEvent>((event, emit) {
-      event.map(
+    on<SignInFormEvent>((event, emit) async {
+      await event.map(
         emailChanged: (e) async {
           emit(state.copyWith(
             emailAddress: EmailAddress(e.emailStr),
@@ -47,7 +47,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
             emit(state.copyWith(
               isSubmitting: false,
-              authFailureOrSuccessOption: some(failureOrSuccess),
+              authFailureOrSuccessOption: optionOf(failureOrSuccess),
             ));
           }
           emit(state.copyWith(
@@ -65,7 +65,10 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
               authFailureOrSuccessOption: none(),
             ));
 
-            final failureOrSuccess = await _authFacade.signInWithGoogle();
+            final failureOrSuccess = await _authFacade.signInWithEmailPassword(
+              emailAddress: state.emailAddress,
+              password: state.password,
+            );
 
             emit(state.copyWith(
               isSubmitting: false,
