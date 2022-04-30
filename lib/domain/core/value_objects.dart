@@ -3,6 +3,7 @@ import 'package:ddd_notes/domain/core/value_validators.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:ddd_notes/domain/core/failures.dart';
+import 'package:uuid/uuid.dart';
 
 import 'errors.dart';
 
@@ -60,4 +61,19 @@ class Password extends ValueObject<String> {
   }
 
   const Password._(this.value);
+}
+
+class UniqueId extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory UniqueId() {
+    return UniqueId._(right(const Uuid().v1()));
+  }
+
+  factory UniqueId.fromUniqueString(String uniqueId) {
+    return UniqueId._(right(uniqueId));
+  }
+
+  const UniqueId._(this.value);
 }
