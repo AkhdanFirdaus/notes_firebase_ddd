@@ -133,7 +133,11 @@ class SignInForm extends StatelessWidget {
                   },
                   child: const Text("SIGN IN WITH GOOGLE"),
                 ),
-              )
+              ),
+              if (state.isSubmitting) ...[
+                const SizedBox(height: 8),
+                const LinearProgressIndicator(),
+              ],
             ],
           ),
         );
