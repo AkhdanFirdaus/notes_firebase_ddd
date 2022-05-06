@@ -151,7 +151,7 @@ class __$NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_NoteDTO extends _NoteDTO {
-  const _$_NoteDTO(
+  _$_NoteDTO(
       {@JsonKey(ignore: true) this.id,
       required this.body,
       required this.color,
@@ -192,14 +192,14 @@ class _$_NoteDTO extends _NoteDTO {
 }
 
 abstract class _NoteDTO extends NoteDTO {
-  const factory _NoteDTO(
+  factory _NoteDTO(
           {@JsonKey(ignore: true) String? id,
           required String body,
           required int color,
           required List<TodoItemDTO> todos,
           @ServerTimestampConverter() required FieldValue serverTimestamp}) =
       _$_NoteDTO;
-  const _NoteDTO._() : super._();
+  _NoteDTO._() : super._();
 
   factory _NoteDTO.fromJson(Map<String, dynamic> json) = _$_NoteDTO.fromJson;
 
@@ -325,8 +325,7 @@ class __$TodoItemDTOCopyWithImpl<$Res> extends _$TodoItemDTOCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TodoItemDTO extends _TodoItemDTO {
-  const _$_TodoItemDTO(
-      {required this.id, required this.name, required this.done})
+  _$_TodoItemDTO({required this.id, required this.name, required this.done})
       : super._();
 
   factory _$_TodoItemDTO.fromJson(Map<String, dynamic> json) =>
@@ -356,11 +355,11 @@ class _$_TodoItemDTO extends _TodoItemDTO {
 }
 
 abstract class _TodoItemDTO extends TodoItemDTO {
-  const factory _TodoItemDTO(
+  factory _TodoItemDTO(
       {required String id,
       required String name,
       required bool done}) = _$_TodoItemDTO;
-  const _TodoItemDTO._() : super._();
+  _TodoItemDTO._() : super._();
 
   factory _TodoItemDTO.fromJson(Map<String, dynamic> json) =
       _$_TodoItemDTO.fromJson;

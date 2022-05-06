@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({Key? key}) : super(key: key);
+  AppWidget({Key? key}) : super(key: key);
+
+  final _router = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    final router = AppRouter();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -20,8 +21,8 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp.router(
         title: 'DDD Notes',
         debugShowCheckedModeBanner: false,
-        routerDelegate: router.delegate(),
-        routeInformationParser: router.defaultRouteParser(),
+        routerDelegate: _router.delegate(),
+        routeInformationParser: _router.defaultRouteParser(),
         theme: ThemeData.light().copyWith(
           colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: Colors.green[800],
@@ -31,6 +32,9 @@ class AppWidget extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
             ),
+          ),
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.blue[900],
           ),
         ),
       ),

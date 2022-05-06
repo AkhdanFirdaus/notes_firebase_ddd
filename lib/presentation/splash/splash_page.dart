@@ -12,7 +12,9 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) {},
-          authenticated: (_) {},
+          authenticated: (_) {
+            context.router.replace(const NotesOverviewRoute());
+          },
           unauthenticated: (_) {
             context.router.replace(const SignInRoute());
           },

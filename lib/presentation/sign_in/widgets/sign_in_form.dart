@@ -1,6 +1,8 @@
+import 'package:ddd_notes/application/auth/auth_bloc.dart';
 import 'package:ddd_notes/application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ddd_notes/presentation/routes/app_router.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -29,13 +31,16 @@ class SignInForm extends StatelessWidget {
                 ),
               )
             },
-            (r) => {},
+            (_) => {
+              context.router.replace(const NotesOverviewRoute()),
+              context.read<AuthBloc>().add(const AuthEvent.authCheckRequested())
+            },
           ),
         );
       },
       builder: (context, state) {
         return Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          autovalidateMode: AutovalidateMode.always,
           child: ListView(
             padding: const EdgeInsets.all(24),
             children: [

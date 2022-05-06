@@ -15,7 +15,7 @@ part 'note_dtos.g.dart';
 class NoteDTO with _$NoteDTO {
   const NoteDTO._();
 
-  const factory NoteDTO({
+  factory NoteDTO({
     @JsonKey(ignore: true) String? id,
     required String body,
     required int color,
@@ -68,7 +68,7 @@ class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
 class TodoItemDTO with _$TodoItemDTO {
   const TodoItemDTO._();
 
-  const factory TodoItemDTO({
+  factory TodoItemDTO({
     required String id,
     required String name,
     required bool done,

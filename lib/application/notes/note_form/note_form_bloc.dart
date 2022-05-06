@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ddd_notes/domain/notes/i_note_repository.dart';
@@ -5,7 +6,6 @@ import 'package:ddd_notes/domain/notes/note.dart';
 import 'package:ddd_notes/domain/notes/note_failure.dart';
 import 'package:ddd_notes/domain/notes/value_objects.dart';
 import 'package:ddd_notes/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
-import 'dart:ui';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
