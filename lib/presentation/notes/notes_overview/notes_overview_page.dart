@@ -2,6 +2,7 @@ import 'package:ddd_notes/application/auth/auth_bloc.dart';
 import 'package:ddd_notes/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:ddd_notes/application/notes/note_watcher/note_watcher_bloc.dart';
 import 'package:ddd_notes/injection.dart';
+import 'package:ddd_notes/presentation/notes/notes_overview/widgets/notes_overview_body_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ddd_notes/presentation/routes/app_router.dart';
@@ -79,8 +80,8 @@ class NotesOverviewPage extends StatelessWidget {
             onPressed: () {},
             child: const Icon(Icons.add),
           ),
-          body: SafeArea(
-            child: Container(),
+          body: const SafeArea(
+            child: NotesOverviewBody(),
           ),
         ),
       ),
