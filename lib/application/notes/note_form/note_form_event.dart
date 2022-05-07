@@ -6,7 +6,7 @@ class NoteFormEvent with _$NoteFormEvent {
       _Initialize;
   const factory NoteFormEvent.bodyChanged(String bodyStr) = _BodyChanged;
   const factory NoteFormEvent.colorChanged(Color color) = _ColorChanged;
-  const factory NoteFormEvent.todosChange(KtList<TodoItemPrimitive> todos) =
+  const factory NoteFormEvent.todosChanged(KtList<TodoItemPrimitive> todos) =
       _TodosChange;
   const factory NoteFormEvent.saved() = _Saved;
 }

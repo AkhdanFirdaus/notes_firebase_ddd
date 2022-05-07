@@ -1,9 +1,14 @@
 import 'package:ddd_notes/application/notes/note_form/note_form_bloc.dart';
 import 'package:ddd_notes/domain/notes/note.dart';
 import 'package:ddd_notes/injection.dart';
+import 'package:ddd_notes/presentation/notes/note_form/misc/todo_item_presentation_classes.dart';
+import 'package:ddd_notes/presentation/notes/note_form/widgets/add_todo_tile_widget.dart';
+import 'package:ddd_notes/presentation/notes/note_form/widgets/body_field_widget.dart';
+import 'package:ddd_notes/presentation/notes/note_form/widgets/color_field_widget.dart';
 import 'package:ddd_notes/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class NoteFormPage extends StatelessWidget {
   final Note? editedNote;
@@ -89,10 +94,10 @@ class SavingInProgressOverlay extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 'Saving',
-                style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2!
+                    .copyWith(color: Colors.white, fontSize: 18),
               ),
             ],
           ),
@@ -124,7 +129,27 @@ class NoteFormPageScaffold extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(child: Container()),
+      body: SafeArea(
+        child: BlocBuilder<NoteFormBloc, NoteFormState>(
+            buildWhen: (p, c) => p.showErrorMessages != c.showErrorMessages,
+            builder: (context, state) {
+              return ChangeNotifierProvider(
+                create: (_) => FormTodos(),
+                child: Form(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: const [
+                        BodyField(),
+                        ColorField(),
+                        AddTodoTile(),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            }),
+      ),
     );
   }
 }

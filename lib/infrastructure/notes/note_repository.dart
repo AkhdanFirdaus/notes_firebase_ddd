@@ -20,9 +20,7 @@ class NoteRepository implements INoteRepository {
     try {
       final userDoc = await _firestore.userDocument();
       final noteDTO = NoteDTO.fromDomain(note);
-
       await userDoc.noteCollection.doc(noteDTO.id).set(noteDTO.toJson());
-
       return right(unit);
     } on FirebaseException catch (e) {
       if (e.message!.contains('PERMISSION_DENIED')) {
@@ -56,9 +54,7 @@ class NoteRepository implements INoteRepository {
     try {
       final userDoc = await _firestore.userDocument();
       final noteDTO = NoteDTO.fromDomain(note);
-
       await userDoc.noteCollection.doc(noteDTO.id).update(noteDTO.toJson());
-
       return right(unit);
     } on FirebaseException catch (e) {
       if (e.message!.contains('PERMISSION_DENIED')) {

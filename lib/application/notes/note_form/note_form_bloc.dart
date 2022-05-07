@@ -41,7 +41,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
             saveFailureOrSuccessOption: none(),
           ));
         },
-        todosChange: (e) async {
+        todosChanged: (e) async {
           emit(state.copyWith(
             note: state.note.copyWith(
               todos: List3(e.todos.map((primitive) => primitive.toDomain())),
@@ -50,7 +50,8 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
           ));
         },
         saved: (e) async {
-          late Either<NoteFailure, Unit> failureOrSuccess;
+          Either<NoteFailure, Unit> failureOrSuccess =
+              left(const NoteFailure.unexpected());
 
           emit(state.copyWith(
             isSaving: true,
@@ -62,7 +63,6 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
                 ? await _noteRepository.update(state.note)
                 : await _noteRepository.create(state.note);
           }
-
           emit(state.copyWith(
             isSaving: false,
             showErrorMessages: true,
