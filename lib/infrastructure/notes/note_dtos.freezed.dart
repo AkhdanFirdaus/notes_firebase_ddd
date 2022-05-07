@@ -94,9 +94,10 @@ class _$NoteDTOCopyWithImpl<$Res> implements $NoteDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$NoteDTOCopyWith<$Res> implements $NoteDTOCopyWith<$Res> {
-  factory _$NoteDTOCopyWith(_NoteDTO value, $Res Function(_NoteDTO) then) =
-      __$NoteDTOCopyWithImpl<$Res>;
+abstract class _$$_NoteDTOCopyWith<$Res> implements $NoteDTOCopyWith<$Res> {
+  factory _$$_NoteDTOCopyWith(
+          _$_NoteDTO value, $Res Function(_$_NoteDTO) then) =
+      __$$_NoteDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true) String? id,
@@ -107,13 +108,13 @@ abstract class _$NoteDTOCopyWith<$Res> implements $NoteDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
-    implements _$NoteDTOCopyWith<$Res> {
-  __$NoteDTOCopyWithImpl(_NoteDTO _value, $Res Function(_NoteDTO) _then)
-      : super(_value, (v) => _then(v as _NoteDTO));
+class __$$_NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
+    implements _$$_NoteDTOCopyWith<$Res> {
+  __$$_NoteDTOCopyWithImpl(_$_NoteDTO _value, $Res Function(_$_NoteDTO) _then)
+      : super(_value, (v) => _then(v as _$_NoteDTO));
 
   @override
-  _NoteDTO get _value => super._value as _NoteDTO;
+  _$_NoteDTO get _value => super._value as _$_NoteDTO;
 
   @override
   $Res call({
@@ -123,7 +124,7 @@ class __$NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
     Object? todos = freezed,
     Object? serverTimestamp = freezed,
   }) {
-    return _then(_NoteDTO(
+    return _then(_$_NoteDTO(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -182,8 +183,8 @@ class _$_NoteDTO extends _NoteDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$NoteDTOCopyWith<_NoteDTO> get copyWith =>
-      __$NoteDTOCopyWithImpl<_NoteDTO>(this, _$identity);
+  _$$_NoteDTOCopyWith<_$_NoteDTO> get copyWith =>
+      __$$_NoteDTOCopyWithImpl<_$_NoteDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -217,7 +218,7 @@ abstract class _NoteDTO extends NoteDTO {
   FieldValue get serverTimestamp => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$NoteDTOCopyWith<_NoteDTO> get copyWith =>
+  _$$_NoteDTOCopyWith<_$_NoteDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -280,24 +281,24 @@ class _$TodoItemDTOCopyWithImpl<$Res> implements $TodoItemDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TodoItemDTOCopyWith<$Res>
+abstract class _$$_TodoItemDTOCopyWith<$Res>
     implements $TodoItemDTOCopyWith<$Res> {
-  factory _$TodoItemDTOCopyWith(
-          _TodoItemDTO value, $Res Function(_TodoItemDTO) then) =
-      __$TodoItemDTOCopyWithImpl<$Res>;
+  factory _$$_TodoItemDTOCopyWith(
+          _$_TodoItemDTO value, $Res Function(_$_TodoItemDTO) then) =
+      __$$_TodoItemDTOCopyWithImpl<$Res>;
   @override
   $Res call({String id, String name, bool done});
 }
 
 /// @nodoc
-class __$TodoItemDTOCopyWithImpl<$Res> extends _$TodoItemDTOCopyWithImpl<$Res>
-    implements _$TodoItemDTOCopyWith<$Res> {
-  __$TodoItemDTOCopyWithImpl(
-      _TodoItemDTO _value, $Res Function(_TodoItemDTO) _then)
-      : super(_value, (v) => _then(v as _TodoItemDTO));
+class __$$_TodoItemDTOCopyWithImpl<$Res> extends _$TodoItemDTOCopyWithImpl<$Res>
+    implements _$$_TodoItemDTOCopyWith<$Res> {
+  __$$_TodoItemDTOCopyWithImpl(
+      _$_TodoItemDTO _value, $Res Function(_$_TodoItemDTO) _then)
+      : super(_value, (v) => _then(v as _$_TodoItemDTO));
 
   @override
-  _TodoItemDTO get _value => super._value as _TodoItemDTO;
+  _$_TodoItemDTO get _value => super._value as _$_TodoItemDTO;
 
   @override
   $Res call({
@@ -305,7 +306,7 @@ class __$TodoItemDTOCopyWithImpl<$Res> extends _$TodoItemDTOCopyWithImpl<$Res>
     Object? name = freezed,
     Object? done = freezed,
   }) {
-    return _then(_TodoItemDTO(
+    return _then(_$_TodoItemDTO(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -345,8 +346,8 @@ class _$_TodoItemDTO extends _TodoItemDTO {
 
   @JsonKey(ignore: true)
   @override
-  _$TodoItemDTOCopyWith<_TodoItemDTO> get copyWith =>
-      __$TodoItemDTOCopyWithImpl<_TodoItemDTO>(this, _$identity);
+  _$$_TodoItemDTOCopyWith<_$_TodoItemDTO> get copyWith =>
+      __$$_TodoItemDTOCopyWithImpl<_$_TodoItemDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -372,6 +373,6 @@ abstract class _TodoItemDTO extends TodoItemDTO {
   bool get done => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TodoItemDTOCopyWith<_TodoItemDTO> get copyWith =>
+  _$$_TodoItemDTOCopyWith<_$_TodoItemDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }

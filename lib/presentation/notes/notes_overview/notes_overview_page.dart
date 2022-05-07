@@ -75,7 +75,9 @@ class NotesOverviewPage extends StatelessWidget {
             ],
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              context.router.push(NoteFormRoute());
+            },
             child: const Icon(Icons.add),
           ),
           body: const SafeArea(

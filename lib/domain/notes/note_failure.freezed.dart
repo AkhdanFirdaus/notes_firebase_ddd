@@ -80,21 +80,21 @@ class _$NoteFailureCopyWithImpl<$Res> implements $NoteFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UnexpectedCopyWith<$Res> {
-  factory _$UnexpectedCopyWith(
-          _Unexpected value, $Res Function(_Unexpected) then) =
-      __$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnexpectedCopyWithImpl<$Res> extends _$NoteFailureCopyWithImpl<$Res>
-    implements _$UnexpectedCopyWith<$Res> {
-  __$UnexpectedCopyWithImpl(
-      _Unexpected _value, $Res Function(_Unexpected) _then)
-      : super(_value, (v) => _then(v as _Unexpected));
+class __$$_UnexpectedCopyWithImpl<$Res> extends _$NoteFailureCopyWithImpl<$Res>
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _Unexpected get _value => super._value as _Unexpected;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Unexpected);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -191,22 +191,23 @@ abstract class _Unexpected implements NoteFailure {
 }
 
 /// @nodoc
-abstract class _$InSufficientPermissionCopyWith<$Res> {
-  factory _$InSufficientPermissionCopyWith(_InSufficientPermission value,
-          $Res Function(_InSufficientPermission) then) =
-      __$InSufficientPermissionCopyWithImpl<$Res>;
+abstract class _$$_InSufficientPermissionCopyWith<$Res> {
+  factory _$$_InSufficientPermissionCopyWith(_$_InSufficientPermission value,
+          $Res Function(_$_InSufficientPermission) then) =
+      __$$_InSufficientPermissionCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InSufficientPermissionCopyWithImpl<$Res>
+class __$$_InSufficientPermissionCopyWithImpl<$Res>
     extends _$NoteFailureCopyWithImpl<$Res>
-    implements _$InSufficientPermissionCopyWith<$Res> {
-  __$InSufficientPermissionCopyWithImpl(_InSufficientPermission _value,
-      $Res Function(_InSufficientPermission) _then)
-      : super(_value, (v) => _then(v as _InSufficientPermission));
+    implements _$$_InSufficientPermissionCopyWith<$Res> {
+  __$$_InSufficientPermissionCopyWithImpl(_$_InSufficientPermission _value,
+      $Res Function(_$_InSufficientPermission) _then)
+      : super(_value, (v) => _then(v as _$_InSufficientPermission));
 
   @override
-  _InSufficientPermission get _value => super._value as _InSufficientPermission;
+  _$_InSufficientPermission get _value =>
+      super._value as _$_InSufficientPermission;
 }
 
 /// @nodoc
@@ -222,7 +223,8 @@ class _$_InSufficientPermission implements _InSufficientPermission {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _InSufficientPermission);
+        (other.runtimeType == runtimeType &&
+            other is _$_InSufficientPermission);
   }
 
   @override
@@ -303,22 +305,22 @@ abstract class _InSufficientPermission implements NoteFailure {
 }
 
 /// @nodoc
-abstract class _$UnableToUpdateCopyWith<$Res> {
-  factory _$UnableToUpdateCopyWith(
-          _UnableToUpdate value, $Res Function(_UnableToUpdate) then) =
-      __$UnableToUpdateCopyWithImpl<$Res>;
+abstract class _$$_UnableToUpdateCopyWith<$Res> {
+  factory _$$_UnableToUpdateCopyWith(
+          _$_UnableToUpdate value, $Res Function(_$_UnableToUpdate) then) =
+      __$$_UnableToUpdateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnableToUpdateCopyWithImpl<$Res>
+class __$$_UnableToUpdateCopyWithImpl<$Res>
     extends _$NoteFailureCopyWithImpl<$Res>
-    implements _$UnableToUpdateCopyWith<$Res> {
-  __$UnableToUpdateCopyWithImpl(
-      _UnableToUpdate _value, $Res Function(_UnableToUpdate) _then)
-      : super(_value, (v) => _then(v as _UnableToUpdate));
+    implements _$$_UnableToUpdateCopyWith<$Res> {
+  __$$_UnableToUpdateCopyWithImpl(
+      _$_UnableToUpdate _value, $Res Function(_$_UnableToUpdate) _then)
+      : super(_value, (v) => _then(v as _$_UnableToUpdate));
 
   @override
-  _UnableToUpdate get _value => super._value as _UnableToUpdate;
+  _$_UnableToUpdate get _value => super._value as _$_UnableToUpdate;
 }
 
 /// @nodoc
@@ -334,7 +336,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _UnableToUpdate);
+        (other.runtimeType == runtimeType && other is _$_UnableToUpdate);
   }
 
   @override

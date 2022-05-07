@@ -53,29 +53,30 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserEntityCopyWith<$Res> implements $UserEntityCopyWith<$Res> {
-  factory _$UserEntityCopyWith(
-          _UserEntity value, $Res Function(_UserEntity) then) =
-      __$UserEntityCopyWithImpl<$Res>;
+abstract class _$$_UserEntityCopyWith<$Res>
+    implements $UserEntityCopyWith<$Res> {
+  factory _$$_UserEntityCopyWith(
+          _$_UserEntity value, $Res Function(_$_UserEntity) then) =
+      __$$_UserEntityCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId id});
 }
 
 /// @nodoc
-class __$UserEntityCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
-    implements _$UserEntityCopyWith<$Res> {
-  __$UserEntityCopyWithImpl(
-      _UserEntity _value, $Res Function(_UserEntity) _then)
-      : super(_value, (v) => _then(v as _UserEntity));
+class __$$_UserEntityCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
+    implements _$$_UserEntityCopyWith<$Res> {
+  __$$_UserEntityCopyWithImpl(
+      _$_UserEntity _value, $Res Function(_$_UserEntity) _then)
+      : super(_value, (v) => _then(v as _$_UserEntity));
 
   @override
-  _UserEntity get _value => super._value as _UserEntity;
+  _$_UserEntity get _value => super._value as _$_UserEntity;
 
   @override
   $Res call({
     Object? id = freezed,
   }) {
-    return _then(_UserEntity(
+    return _then(_$_UserEntity(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -101,7 +102,7 @@ class _$_UserEntity implements _UserEntity {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserEntity &&
+            other is _$_UserEntity &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -111,8 +112,8 @@ class _$_UserEntity implements _UserEntity {
 
   @JsonKey(ignore: true)
   @override
-  _$UserEntityCopyWith<_UserEntity> get copyWith =>
-      __$UserEntityCopyWithImpl<_UserEntity>(this, _$identity);
+  _$$_UserEntityCopyWith<_$_UserEntity> get copyWith =>
+      __$$_UserEntityCopyWithImpl<_$_UserEntity>(this, _$identity);
 }
 
 abstract class _UserEntity implements UserEntity {
@@ -122,6 +123,6 @@ abstract class _UserEntity implements UserEntity {
   UniqueId get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserEntityCopyWith<_UserEntity> get copyWith =>
+  _$$_UserEntityCopyWith<_$_UserEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }

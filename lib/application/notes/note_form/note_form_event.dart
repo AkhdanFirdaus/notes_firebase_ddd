@@ -2,7 +2,8 @@ part of 'note_form_bloc.dart';
 
 @freezed
 class NoteFormEvent with _$NoteFormEvent {
-  const factory NoteFormEvent.initialize(Note? initialNoteOption) = _Initialize;
+  const factory NoteFormEvent.initialized(Note? initialNoteOption) =
+      _Initialize;
   const factory NoteFormEvent.bodyChanged(String bodyStr) = _BodyChanged;
   const factory NoteFormEvent.colorChanged(Color color) = _ColorChanged;
   const factory NoteFormEvent.todosChange(KtList<TodoItemPrimitive> todos) =

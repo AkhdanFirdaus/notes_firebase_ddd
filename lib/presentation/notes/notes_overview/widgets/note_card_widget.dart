@@ -1,6 +1,7 @@
 import 'package:ddd_notes/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:ddd_notes/domain/notes/note.dart';
 import 'package:ddd_notes/domain/notes/todo_item.dart';
+import 'package:ddd_notes/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
@@ -12,10 +13,13 @@ class NoteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AutoRouter.of(context);
     return Card(
       color: note.color.getOrCrash(),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          context.router.push(NoteFormRoute(editedNote: note));
+        },
         onLongPress: () {
           final noteActorBloc = context.read<NoteActorBloc>();
           _showDeletionDialog(context, noteActorBloc);

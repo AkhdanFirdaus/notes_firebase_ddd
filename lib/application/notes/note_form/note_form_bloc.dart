@@ -21,7 +21,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
   NoteFormBloc(this._noteRepository) : super(NoteFormState.initial()) {
     on<NoteFormEvent>((event, emit) async {
       await event.map(
-        initialize: (e) async {
+        initialized: (e) async {
           if (e.initialNoteOption != null) {
             emit(state.copyWith(
               note: e.initialNoteOption!,
