@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:provider/provider.dart';
 
@@ -36,11 +37,33 @@ class TodoList extends StatelessWidget {
       },
       child: Consumer<FormTodos>(
         builder: (context, formTodos, child) {
-          return ListView.builder(
+          return ImplicitlyAnimatedReorderableList<TodoItemPrimitive>(
             shrinkWrap: true,
-            itemCount: formTodos.value.size,
-            itemBuilder: (context, index) {
-              return TodoTile(index: index);
+            removeDuration: const Duration(milliseconds: 0),
+            items: formTodos.value.asList(),
+            areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+            onReorderFinished: (item, from, to, newItems) {
+              context.formTodos = newItems.toImmutableList();
+              context
+                  .read<NoteFormBloc>()
+                  .add(NoteFormEvent.todosChanged(context.formTodos));
+            },
+            itemBuilder: (context, itemAnimation, item, index) {
+              return Reorderable(
+                key: ValueKey(item.id),
+                builder: (context, animation, inDrag) {
+                  return ScaleTransition(
+                    scale: Tween<double>(
+                      begin: 1,
+                      end: 0.95,
+                    ).animate(animation),
+                    child: TodoTile(
+                      index: index,
+                      elevation: animation.value * 4,
+                    ),
+                  );
+                },
+              );
             },
           );
         },
@@ -51,10 +74,12 @@ class TodoList extends StatelessWidget {
 
 class TodoTile extends HookWidget {
   final int index;
+  final double elevation;
 
   const TodoTile({
     Key? key,
     required this.index,
+    this.elevation = 0,
   }) : super(key: key);
 
   @override
@@ -63,7 +88,6 @@ class TodoTile extends HookWidget {
         context.formTodos.getOrElse(index, (_) => TodoItemPrimitive.empty());
     final controller = useTextEditingController(text: todo.name);
     return Slidable(
-      key: ValueKey(todo.id.getOrCrash()),
       endActionPane: ActionPane(
         motion: const ScrollMotion(),
         children: [
@@ -81,42 +105,56 @@ class TodoTile extends HookWidget {
           ),
         ],
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(8),
-        ),
+      child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 8.0,
           vertical: 2.0,
         ),
-        child: CheckboxListTile(
-          controlAffinity: ListTileControlAffinity.leading,
-          value: todo.done,
-          onChanged: (value) {
-            context.formTodos = context.formTodos.map((listTodo) =>
-                listTodo == todo ? todo.copyWith(done: value!) : listTodo);
-            context
-                .read<NoteFormBloc>()
-                .add(NoteFormEvent.todosChanged(context.formTodos));
-          },
-          title: TextFormField(
-            controller: controller,
-            decoration: const InputDecoration(
-              hintText: 'Todo',
-              counterText: '',
-              border: InputBorder.none,
+        child: Material(
+          elevation: elevation,
+          animationDuration: const Duration(milliseconds: 50),
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(8),
             ),
-            maxLength: TodoName.maxLength,
-            onChanged: (value) {
-              context.formTodos = context.formTodos.map((listTodo) =>
-                  listTodo == todo ? todo.copyWith(name: value) : listTodo);
-              context
-                  .read<NoteFormBloc>()
-                  .add(NoteFormEvent.todosChanged(context.formTodos));
-            },
-            validator: (_) =>
-                context.read<NoteFormBloc>().state.note.todos.value.fold(
+            child: ListTile(
+              leading: Checkbox(
+                value: todo.done,
+                onChanged: (value) {
+                  context.formTodos = context.formTodos.map((listTodo) =>
+                      listTodo == todo
+                          ? todo.copyWith(done: value!)
+                          : listTodo);
+                  context
+                      .read<NoteFormBloc>()
+                      .add(NoteFormEvent.todosChanged(context.formTodos));
+                },
+              ),
+              trailing: const Handle(child: Icon(Icons.list)),
+              title: TextFormField(
+                controller: controller,
+                decoration: const InputDecoration(
+                  hintText: 'Todo',
+                  counterText: '',
+                  border: InputBorder.none,
+                ),
+                maxLength: TodoName.maxLength,
+                onChanged: (value) {
+                  context.formTodos = context.formTodos.map((listTodo) =>
+                      listTodo == todo ? todo.copyWith(name: value) : listTodo);
+                  context
+                      .read<NoteFormBloc>()
+                      .add(NoteFormEvent.todosChanged(context.formTodos));
+                },
+                validator: (_) => context
+                    .read<NoteFormBloc>()
+                    .state
+                    .note
+                    .todos
+                    .value
+                    .fold(
                       (either) => either.maybeMap(
                         orElse: () => '',
                       ),
@@ -130,6 +168,8 @@ class TodoTile extends HookWidget {
                             (_) => null,
                           ),
                     ),
+              ),
+            ),
           ),
         ),
       ),

@@ -27,6 +27,7 @@ dependencies:
   flutter_hooks: ^0.18.3
   provider: ^6.0.2
   flutter_slidable: ^1.2.0
+  implicitly_animated_reorderable_list: ^0.4.2
 
 dev_dependencies:
   flutter_test:
