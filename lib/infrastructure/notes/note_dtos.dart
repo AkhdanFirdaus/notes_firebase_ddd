@@ -11,15 +11,15 @@ import 'package:kt_dart/kt.dart';
 part 'note_dtos.freezed.dart';
 part 'note_dtos.g.dart';
 
-@unfreezed
+@freezed
 class NoteDTO with _$NoteDTO {
   const NoteDTO._();
 
   factory NoteDTO({
-    @JsonKey(ignore: true) String? id,
-    required String body,
-    required int color,
-    required List<TodoItemDTO> todos,
+    @JsonKey(ignore: true) final String? id,
+    required final String body,
+    required final int color,
+    required final List<TodoItemDTO> todos,
     @ServerTimestampConverter() required FieldValue serverTimestamp,
   }) = _NoteDTO;
 
@@ -64,14 +64,14 @@ class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
   }
 }
 
-@unfreezed
+@freezed
 class TodoItemDTO with _$TodoItemDTO {
   const TodoItemDTO._();
 
   factory TodoItemDTO({
-    required String id,
-    required String name,
-    required bool done,
+    required final String id,
+    required final String name,
+    required final bool done,
   }) = _TodoItemDTO;
 
   factory TodoItemDTO.fromDomain(TodoItem todoItem) {

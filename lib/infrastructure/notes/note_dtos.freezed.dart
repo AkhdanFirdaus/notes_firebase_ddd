@@ -22,18 +22,11 @@ NoteDTO _$NoteDTOFromJson(Map<String, dynamic> json) {
 mixin _$NoteDTO {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  set id(String? value) => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
-  set body(String value) => throw _privateConstructorUsedError;
   int get color => throw _privateConstructorUsedError;
-  set color(int value) => throw _privateConstructorUsedError;
   List<TodoItemDTO> get todos => throw _privateConstructorUsedError;
-  set todos(List<TodoItemDTO> value) => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
   FieldValue get serverTimestamp => throw _privateConstructorUsedError;
-  @ServerTimestampConverter()
-  set serverTimestamp(FieldValue value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -138,7 +131,7 @@ class __$$_NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
           : color // ignore: cast_nullable_to_non_nullable
               as int,
       todos: todos == freezed
-          ? _value.todos
+          ? _value._todos
           : todos // ignore: cast_nullable_to_non_nullable
               as List<TodoItemDTO>,
       serverTimestamp: serverTimestamp == freezed
@@ -156,30 +149,59 @@ class _$_NoteDTO extends _NoteDTO {
       {@JsonKey(ignore: true) this.id,
       required this.body,
       required this.color,
-      required this.todos,
+      required final List<TodoItemDTO> todos,
       @ServerTimestampConverter() required this.serverTimestamp})
-      : super._();
+      : _todos = todos,
+        super._();
 
   factory _$_NoteDTO.fromJson(Map<String, dynamic> json) =>
       _$$_NoteDTOFromJson(json);
 
   @override
   @JsonKey(ignore: true)
-  String? id;
+  final String? id;
   @override
-  String body;
+  final String body;
   @override
-  int color;
+  final int color;
+  final List<TodoItemDTO> _todos;
   @override
-  List<TodoItemDTO> todos;
+  List<TodoItemDTO> get todos {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_todos);
+  }
+
   @override
   @ServerTimestampConverter()
-  FieldValue serverTimestamp;
+  final FieldValue serverTimestamp;
 
   @override
   String toString() {
     return 'NoteDTO(id: $id, body: $body, color: $color, todos: $todos, serverTimestamp: $serverTimestamp)';
   }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_NoteDTO &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.body, body) &&
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other._todos, _todos) &&
+            const DeepCollectionEquality()
+                .equals(other.serverTimestamp, serverTimestamp));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(body),
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(_todos),
+      const DeepCollectionEquality().hash(serverTimestamp));
 
   @JsonKey(ignore: true)
   @override
@@ -194,12 +216,13 @@ class _$_NoteDTO extends _NoteDTO {
 
 abstract class _NoteDTO extends NoteDTO {
   factory _NoteDTO(
-          {@JsonKey(ignore: true) String? id,
-          required String body,
-          required int color,
-          required List<TodoItemDTO> todos,
-          @ServerTimestampConverter() required FieldValue serverTimestamp}) =
-      _$_NoteDTO;
+      {@JsonKey(ignore: true)
+          final String? id,
+      required final String body,
+      required final int color,
+      required final List<TodoItemDTO> todos,
+      @ServerTimestampConverter()
+          required final FieldValue serverTimestamp}) = _$_NoteDTO;
   _NoteDTO._() : super._();
 
   factory _NoteDTO.fromJson(Map<String, dynamic> json) = _$_NoteDTO.fromJson;
@@ -229,11 +252,8 @@ TodoItemDTO _$TodoItemDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TodoItemDTO {
   String get id => throw _privateConstructorUsedError;
-  set id(String value) => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  set name(String value) => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
-  set done(bool value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -333,16 +353,34 @@ class _$_TodoItemDTO extends _TodoItemDTO {
       _$$_TodoItemDTOFromJson(json);
 
   @override
-  String id;
+  final String id;
   @override
-  String name;
+  final String name;
   @override
-  bool done;
+  final bool done;
 
   @override
   String toString() {
     return 'TodoItemDTO(id: $id, name: $name, done: $done)';
   }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TodoItemDTO &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.done, done));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(done));
 
   @JsonKey(ignore: true)
   @override
@@ -357,9 +395,9 @@ class _$_TodoItemDTO extends _TodoItemDTO {
 
 abstract class _TodoItemDTO extends TodoItemDTO {
   factory _TodoItemDTO(
-      {required String id,
-      required String name,
-      required bool done}) = _$_TodoItemDTO;
+      {required final String id,
+      required final String name,
+      required final bool done}) = _$_TodoItemDTO;
   _TodoItemDTO._() : super._();
 
   factory _TodoItemDTO.fromJson(Map<String, dynamic> json) =
